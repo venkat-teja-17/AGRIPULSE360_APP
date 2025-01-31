@@ -1,0 +1,106 @@
+.container {
+  
+    width: 100%;
+    max-width: 800px;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 1.0);
+    }
+  
+      body {
+        background-color: white;
+        color: #77bba2;
+        font-family: Arial, sans-serif;
+        margin: 7;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+  
+      .container {
+        text-align: center;
+        background-color:#effbf7;
+        width: 90%;
+        max-width: 400px;
+      }
+  
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+        color: #894a14;
+        margin-bottom: 70px;
+      }
+  
+      .input {
+        width: 90%;
+        height: 20px;
+        background-color: #77bba2;
+        border-radius: 30px;
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+      }
+  
+      .button {
+        width: 100%;
+        padding: 15px;
+        border-radius: 25px;
+        margin-bottom: 15px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      
+      
+      
+      .loginButton {
+        background-color: #3c7962;
+        color: #fff;
+        margin-top: 50px;
+        margin-bottom: 0;
+        border-radius: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      }
+   
+      
+      .col {
+      width: 100%;
+      margin-top: 20;
+      }
+      
+      .gogleButton {
+        background-color: #fff;
+        color: #000;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+      }
+      
+      
+      .signUp {
+        color: #3c7962;
+        font-size: 20px;
+        margin-top: 20px;
+        
+      }
+      
+      .signUpLink {
+        color: #4CAF50;
+        font-weight: bold;
+        text-decoration: underline;
+      }
+      .forgotPassword {
+        color: #000;
+        font-size: 15px;
+        margin-left: 260px;
+        margin-top: 10px;
+      
+      }
+      
+      .forgotPasswordLink {
+        color: #4CAF50;
+        font-weight: bold;
+        text-decoration: underline;
+        text-align: right;
+      }

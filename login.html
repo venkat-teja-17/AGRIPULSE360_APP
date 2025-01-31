@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Screen</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+  <div class="container">
+    <!-- App Logo -->
+    <div class="logo" >AGRIPULSE360</div>
+    
+    
+
+    <!-- Email/Phone Input -->
+    <input type="text" class="input" id="email" placeholder="Phone Number/Email" />
+
+    <!-- Password Input -->
+    <input type="password" class="input" id="password" placeholder="Password" />
+    
+    
+    <!-- Forgot Password  -->
+    <div class="forgot password">
+       <a href="#" class="forgotPassword">Forgot Password?</a>
+       
+
+    <!-- Login Button -->
+    <button class="button loginButton" onclick="handleLogin()">Log In</button>
+    <h5 style="text-align:center">----------OR----------</h5>
+
+    <!-- Google Login -->
+    <button class="button googleButton">Log in with Google</button>
+
+    
+    
+    <!-- Sign-Up Link -->
+    <div class="signUp">
+      Don’t have an account? <a href="#" class="signUpLink">Sign Up</a>
+    </div>
+  </div>
+  <script src="login.js"></script>
+</body>
+</html>
