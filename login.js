@@ -4,14 +4,30 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebas
   import { getAuth, signInWithEmailAndPassword  } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
   // Your web app's Firebase configuration
   const firebaseConfig = {
-    apiKey: "AIzaSyDicPk_mDgVOZwmpRHxCNT-ijsiZXRRve8",
-    authDomain: "agri-7ba10.firebaseapp.com",
-    projectId: "agri-7ba10",
-    storageBucket: "agri-7ba10.firebasestorage.app",
-    messagingSenderId: "1090807117992",
-    appId: "1:1090807117992:web:d3c21b3afac239c9156a9d"
+    apiKey: "AIzaSyAZjh5uhKM2pSrGlRGnA_u9J71VGukTBwc",
+    authDomain: "agripulse-e079e.firebaseapp.com",
+    projectId: "agripulse-e079e",
+    storageBucket: "agripulse-e079e.firebasestorage.app",
+    messagingSenderId: "621805575302",
+    appId: "1:621805575302:web:28f6277fa5b095c469c507",
+    measurementId: "G-4Q3BJFB55H"
   };
 
+
+  const checkLoginStatus = async () => {
+    try {
+      const userData = await AsyncStorage.getItem('user');
+      if (userData) {
+        const parsedUserData = JSON.parse(userData);
+        setUser(parsedUserData);
+        window.location.href = "../agripluse/index.html";
+      }
+    } catch (error) {
+      console.log('Error retrieving user data:', error);
+    }
+  };
+
+  checkLoginStatus();
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const auth = getAuth();
@@ -33,7 +49,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebas
   .then((userCredential) => {
     // Signed up 
     const user = userCredential.user;
-    alert('Creating Account...');
+    // alert('Creating Account...');
     window.location.href = "../agripluse/index.html";
     // ...
   })
