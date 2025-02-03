@@ -1,0 +1,40 @@
+/* Set the overall styles for the body */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+}
+
+/* Center the intro container */
+.intro-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  background-color: #28a745; /* Green background */
+  opacity: 0; /* Initial state is hidden */
+  animation: fadeIn 1s ease-out forwards, scaleIn 0.5s ease-out forwards 1s; /* Fade-in and scale-in animation */
+}
+
+/* Logo styles */
+.logo {
+  width: 150px; /* Adjust the size of your logo */
+  height: auto;
+  transform: scale(0.8); /* Start with a smaller size */
+  animation: scaleIn 1s ease-out forwards;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Scale-in animation */
+@keyframes scaleIn {
+  to {
+    transform: scale(1);
+  }
+}
