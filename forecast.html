@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="forecast.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZOSPmuSbcCc6Cr-qka7GDEoo5YcW5mes&callback=initMap" async defer></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Weather Information</h2>
+        <p id="location">Fetching location...</p>
+        <p id="temperature">Temperature: --</p>
+        <p id="description">Description: --</p>
+        <button onclick="getWeeklyWeather()">Weekly Data</button>
+    </div>
+    
+    <script src="forecast.js"></script>
+</body>
+</html>
