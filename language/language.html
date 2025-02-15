@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Language - AGRIPULSE360</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="language.css">
+</head>
+<body>
+    <div class="language-container">
+        <h2 data-translate="selectLanguage">Select Your Language</h2>
+        <p data-translate="chooseLang">Choose a language for AGRIPULSE360</p>
+        
+        <input type="text" id="language-search" class="language-search" data-translate="searchLanguages" placeholder="Search languages...">
+        
+        <div class="language-options">
+            <!-- Indian Languages -->
+            <button class="btn btn-outline-primary language-btn" data-lang="en" data-name="English">English</button>
+            <button class="btn btn-outline-primary language-btn" data-lang="hi" data-name="Hindi">हिन्दी (Hindi)</button>
+            <button class="btn btn-outline-primary language-btn" data-lang="te" data-name="Telugu">తెలుగు (Telugu)</button>
+            <button class="btn btn-outline-primary language-btn" data-lang="ta" data-name="Tamil">தமிழ் (Tamil)</button>
+            <button class="btn btn-outline-primary language-btn" data-lang="kn" data-name="Kannada">ಕನ್ನಡ (Kannada)</button>
+            <button class="btn btn-outline-primary language-btn" data-lang="ml" data-name="Malayalam">മലയാളം (Malayalam)</button>
+            <button class="btn btn-outline-primary language-btn" data-lang="mr" data-name="Marathi">मराठी (Marathi)</button>
+            <button class="btn btn-outline-primary language-btn" data-lang="gu" data-name="Gujarati">ગુજરાતી (Gujarati)</button>
+            <button class="btn btn-outline-primary language-btn" data-lang="pa" data-name="Punjabi">ਪੰਜਾਬੀ (Punjabi)</button>
+            <button class="btn btn-outline-primary language-btn" data-lang="bn" data-name="Bengali">বাংলা (Bengali)</button>
+            <button class="btn btn-outline-primary language-btn" data-lang="or" data-name="Odia">ଓଡ଼ିଆ (Odia)</button>
+            <button class="btn btn-outline-primary language-btn" data-lang="as" data-name="Assamese">অসমীয়া (Assamese)</button>
+            <button class="btn btn-outline-primary language-btn" data-lang="ur" data-name="Urdu">اردو (Urdu)</button>
+            <button class="btn btn-outline-primary language-btn" data-lang="ne" data-name="Nepali">नेपाली (Nepali)</button>
+            <button class="btn btn-outline-primary language-btn" data-lang="sd" data-name="Sindhi">سنڌي (Sindhi)</button>
+            <button class="btn btn-outline-primary language-btn" data-lang="sa" data-name="Sanskrit">संस्कृतम् (Sanskrit)</button>
+            <button class="btn btn-outline-primary language-btn" data-lang="kok" data-name="Konkani">कोंकणी (Konkani)</button>
+            <button class="btn btn-outline-primary language-btn" data-lang="mai" data-name="Maithili">मैथिली (Maithili)</button>
+            <button class="btn btn-outline-primary language-btn" data-lang="doi" data-name="Dogri">डोगरी (Dogri)</button>
+            <button class="btn btn-outline-primary language-btn" data-lang="ks" data-name="Kashmiri">کٲشُر (Kashmiri)</button>
+        </div>
+    </div>
+
+    <script>
+         document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('language-search');
+            const languageButtons = document.querySelectorAll('.language-btn');
+            
+            // Search functionality
+            searchInput.addEventListener('input', () => {
+                const searchTerm = searchInput.value.toLowerCase();
+                
+                languageButtons.forEach(button => {
+                    const languageName = button.getAttribute('data-name').toLowerCase();
+                    const languageText = button.textContent.toLowerCase();
+                    
+                    if (languageName.includes(searchTerm) || languageText.includes(searchTerm)) {
+                        button.classList.remove('hidden');
+                    } else {
+                        button.classList.add('hidden');
+                    }
+                });
+            });
+
+            // Get the selected language from URL query parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const selectedLanguage = urlParams.get('lang');
+
+            // Update the page with the selected language
+            if (selectedLanguage) {
+                document.querySelector('h2').textContent = `Login - ${selectedLanguage}`;
+                document.querySelector('p').textContent = `Welcome to AGRIPULSE360 in ${selectedLanguage}`;
+            }
+
+            // Language selection event listener
+            languageButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const selectedLanguage = button.getAttribute('data-lang');
+                    
+                    // Save language preference to localStorage
+                    localStorage.setItem('appLanguage', selectedLanguage);
+                    
+                    // Redirect to login page with selected language
+                    window.location.href = `login.html?lang=${selectedLanguage}`;
+                });
+            });
+         });
+    </script>
+    <script src="../js/translations.js"></script>
+    <script src="language.js"></script>
+</body>
+</html>

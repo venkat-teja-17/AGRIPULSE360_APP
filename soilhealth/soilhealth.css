@@ -1,0 +1,400 @@
+/* Global Styles */
+:root {
+    --primary-color: #2a7a2a;
+    --secondary-color: #4CAF50;
+    --accent-color: #8BC34A;
+    --background-color: #f5f5f5;
+    --card-background: #ffffff;
+    --text-color: #333333;
+    --border-radius: 8px;
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.back-button, .help-button {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover, .help-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Container Layout */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+}
+
+/* Sections */
+.section {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+.section h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Input Method Toggle */
+.input-toggle {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.input-toggle button {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid var(--primary-color);
+    background: none;
+    color: var(--primary-color);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.input-toggle button.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Slider Containers */
+.slider-container {
+    margin-bottom: 1.5rem;
+}
+
+.slider-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.fa-info-circle {
+    color: var(--secondary-color);
+    cursor: help;
+}
+
+input[type="range"] {
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: #ddd;
+    outline: none;
+    appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+/* Results Grid */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.result-card {
+    background-color: var(--card-background);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+/* Status Styles */
+.status {
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.excellent { color: #2a7a2a; }
+.good { color: #ffc107; }
+.poor { color: #dc3545; }
+
+/* Health Meter */
+.health-meter {
+    background-color: #eee;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+.meter-fill {
+    height: 100%;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+/* Recommendations Grid */
+.recommendations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.recommendation-card {
+    background-color: var(--card-background);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.recommendation-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* History Section */
+.history-chart {
+    margin-bottom: 1rem;
+}
+
+.history-table {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Reference Panel */
+.reference-panel {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 5rem;
+}
+
+.reference-panel h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.ideal-ranges ul, .quick-tips ul {
+    list-style: none;
+    margin-bottom: 1rem;
+}
+
+.ideal-ranges li, .quick-tips li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.ideal-ranges li:before, .quick-tips li:before {
+    content: "•";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: var(--card-background);
+    margin: 15% auto;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    max-width: 600px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Weather Widget */
+.weather-widget {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    background-color: var(--card-background);
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+    
+    .reference-panel {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .results-grid,
+    .recommendations-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .navbar h1 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.section {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Export Button */
+.export-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.export-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Sensor Controls */
+.sensor-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.sensor-btn {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.sensor-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.sensor-btn:not(:disabled):hover {
+    background-color: var(--secondary-color);
+}
+
+.sensor-status {
+    text-align: center;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: var(--border-radius);
+    margin-top: 1rem;
+}

@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroPulse Feedback</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #45a049;
+            --accent-color: #2196F3;
+            --error-color: #f44336;
+            --success-color: #4CAF50;
+            --text-color: #333;
+            --light-gray: #f5f5f5;
+            --border-radius: 10px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .feedback-container {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .nav-button {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-button:hover {
+            background: var(--light-gray);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            text-align: center;
+        }
+
+        .emoji-group {
+            display: flex;
+            justify-content: space-between;
+            margin: 1.5rem 0;
+            padding: 0 1rem;
+        }
+
+        .emoji-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .emoji {
+            font-size: 2.5rem;
+            transition: var(--transition);
+            filter: grayscale(1);
+        }
+
+        .emoji-option:hover .emoji,
+        .emoji-option.selected .emoji {
+            filter: grayscale(0);
+            transform: scale(1.2);
+        }
+
+        .emoji-label {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        .emoji-option:hover .emoji-label,
+        .emoji-option.selected .emoji-label {
+            opacity: 1;
+            color: var(--primary-color);
+        }
+
+        .improvement-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .option {
+            background: var(--light-gray);
+            border: 2px solid transparent;
+            border-radius: 25px;
+            padding: 0.8rem 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .option:hover {
+            background: white;
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .option.selected {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .option i {
+            font-size: 1.1rem;
+        }
+
+        .feedback-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 1rem;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            resize: vertical;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .char-count {
+            position: absolute;
+            bottom: 0.5rem;
+            right: 0.5rem;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .submit-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .success-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--success-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transform: translateX(120%);
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .success-message.show {
+            transform: translateX(0);
+        }
+
+        @media (max-width: 600px) {
+            .feedback-container {
+                padding: 1.5rem;
+            }
+
+            .emoji-group {
+                padding: 0;
+            }
+
+            .emoji {
+                font-size: 2rem;
+            }
+
+            .improvement-options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--light-gray);
+            overflow: hidden;
+        }
+
+        .progress {
+            width: 0;
+            height: 100%;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        /* Rating Labels */
+        .rating-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse {
+            animation: pulse 1s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="feedback-container">
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+
+        <header>
+            <button class="nav-button" onclick="window.location.href='../dashboard/index.html'">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h1>Your Feedback</h1>
+            <button class="nav-button" id="menuBtn">
+                <i class="fas fa-ellipsis-v"></i>
+            </button>
+        </header>
+
+        <div class="section">
+            <h2 class="section-title">How satisfied are you with our service?</h2>
+            <div class="emoji-group">
+                <div class="emoji-option" data-rating="1">
+                    <span class="emoji">😡</span>
+                    <span class="emoji-label">Very Poor</span>
+                </div>
+                <div class="emoji-option" data-rating="2">
+                    <span class="emoji">😞</span>
+                    <span class="emoji-label">Poor</span>
+                </div>
+                <div class="emoji-option" data-rating="3">
+                    <span class="emoji">😐</span>
+                    <span class="emoji-label">Okay</span>
+                </div>
+                <div class="emoji-option" data-rating="4">
+                    <span class="emoji">😊</span>
+                    <span class="emoji-label">Good</span>
+                </div>
+                <div class="emoji-option" data-rating="5">
+                    <span class="emoji">😍</span>
+                    <span class="emoji-label">Excellent</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">What areas need improvement?</h2>
+            <div class="improvement-options">
+                <button class="option">
+                    <i class="fas fa-star"></i>
+                    Overall Service
+                </button>
+                <button class="option">
+                    <i class="fas fa-eye"></i>
+                    Transparency
+                </button>
+                <button class="option">
+                    <i class="fas fa-headset"></i>
+                    Support
+                </button>
+                <button class="option">
+                    <i class="fas fa-chart-line"></i>
+                    Accuracy
+                </button>
+                <button class="option">
+                    <i class="fas fa-mobile-alt"></i>
+                    App Features
+                </button>
+                <button class="option">
+                    <i class="fas fa-clock"></i>
+                    Response Time
+                </button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Additional Comments</h2>
+            <div class="feedback-form">
+                <div class="input-group">
+                    <textarea 
+                        placeholder="Share your thoughts with us..."
+                        maxlength="500"
+                    ></textarea>
+                    <div class="char-count">0/500</div>
+                </div>
+                <button class="submit-btn" id="submitBtn">
+                    <i class="fas fa-paper-plane"></i>
+                    Submit Feedback
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="success-message">
+        <i class="fas fa-check-circle"></i>
+        Thank you for your feedback!
+    </div>
+
+    <script>
+        // Progress tracking
+        let progress = 0;
+        const progressBar = document.querySelector('.progress');
+        const sections = document.querySelectorAll('.section');
+        
+        function updateProgress() {
+            const total = 3; // Total number of sections
+            let completed = 0;
+            
+            // Check emoji rating
+            if (document.querySelector('.emoji-option.selected')) {
+                completed++;
+            }
+            
+            // Check improvement options
+            if (document.querySelectorAll('.option.selected').length > 0) {
+                completed++;
+            }
+            
+            // Check comments
+            if (document.querySelector('textarea').value.trim().length > 0) {
+                completed++;
+            }
+            
+            progress = (completed / total) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        // Emoji selection
+        const emojiOptions = document.querySelectorAll('.emoji-option');
+        emojiOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                emojiOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                updateProgress();
+            });
+        });
+
+        // Improvement options selection
+        const options = document.querySelectorAll('.option');
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                option.classList.toggle('selected');
+                updateProgress();
+            });
+        });
+
+        // Character count
+        const textarea = document.querySelector('textarea');
+        const charCount = document.querySelector('.char-count');
+        
+        textarea.addEventListener('input', () => {
+            const length = textarea.value.length;
+            charCount.textContent = `${length}/500`;
+            updateProgress();
+        });
+
+        // Submit feedback
+        const submitBtn = document.getElementById('submitBtn');
+        const successMessage = document.querySelector('.success-message');
+        
+        submitBtn.addEventListener('click', () => {
+            if (progress < 100) {
+                alert('Please complete all sections before submitting.');
+                return;
+            }
+
+            // Collect feedback data
+            const rating = document.querySelector('.emoji-option.selected')?.dataset.rating;
+            const improvements = Array.from(document.querySelectorAll('.option.selected'))
+                .map(opt => opt.textContent.trim());
+            const comments = textarea.value.trim();
+
+            // Create feedback object
+            const feedback = {
+                rating,
+                improvements,
+                comments,
+                timestamp: new Date().toISOString()
+            };
+
+            // Log feedback (replace with actual API call)
+            console.log('Feedback submitted:', feedback);
+
+            // Show success message
+            successMessage.classList.add('show');
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 3000);
+
+            // Reset form
+            emojiOptions.forEach(opt => opt.classList.remove('selected'));
+            options.forEach(opt => opt.classList.remove('selected'));
+            textarea.value = '';
+            charCount.textContent = '0/500';
+            updateProgress();
+        });
+
+        // Animate sections on scroll
+        function animateSections() {
+            sections.forEach((section, index) => {
+                setTimeout(() => {
+                    section.style.animation = 'fadeInUp 0.5s forwards';
+                }, index * 200);
+            });
+        }
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', animateSections);
+    </script>
+</body>
+</html>

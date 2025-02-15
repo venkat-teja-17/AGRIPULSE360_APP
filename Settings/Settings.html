@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroPulse Settings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="Settings.css">
+    <script src="../js/translations.js"></script>
+</head>
+<body>
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+        </label>
+        <em>Dark Mode</em>
+    </div>
+
+    <div class="settings-container">
+        <div class="header">
+            <button class="back-button" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h1 data-translate="settings">Settings</h1>
+            <div class="header-actions">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="profile-btn">
+                    <img src="../assets/profile-placeholder.jpg" alt="Profile" id="profile-image">
+                </button>
+            </div>
+        </div>
+
+        <div class="search-bar" id="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search settings..." id="settings-search">
+            <button class="clear-search">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="content">
+            <section class="settings-section" data-section="account">
+                <h2 data-translate="accountSettings"><i class="fas fa-user"></i> Account Settings</h2>
+                <ul>
+                    <li>
+                        <div class="setting-item">
+                            <i class="fas fa-id-card"></i>
+                            <span data-translate="profileInformation">Profile Information</span>
+                        </div>
+                        <button class="action-btn" onclick="navigateTo('../profile.html')">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <div class="setting-item">
+                            <i class="fas fa-lock"></i>
+                            <span data-translate="security">Security</span>
+                        </div>
+                        <button class="action-btn" onclick="navigateTo('../security.html')">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <div class="setting-item">
+                            <i class="fas fa-file-alt"></i>
+                            <span data-translate="permissions">Permissions</span>
+                        </div>
+                        <button class="action-btn" onclick="navigateTo('../permissions/permissions.html')">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="settings-section" data-section="notifications">
+                <h2 data-translate="notifications"><i class="fas fa-bell"></i> Notifications</h2>
+                <ul>
+                    <li>
+                        <div class="setting-item">
+                            <i class="fas fa-envelope"></i>
+                            <span data-translate="emailNotifications">Email Notifications</span>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </li>
+                    <li>
+                        <div class="setting-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span data-translate="pushNotifications">Push Notifications</span>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </li>
+                    <li>
+                        <div class="setting-item">
+                            <i class="fas fa-cloud-sun"></i>
+                            <span data-translate="weatherAlerts">Weather Alerts</span>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="settings-section" data-section="privacy">
+                <h2 data-translate="privacyAndSecurity"><i class="fas fa-shield-alt"></i> Privacy & Security</h2>
+                <ul>
+                    <li>
+                        <div class="setting-item">
+                            <i class="fas fa-user-shield"></i>
+                            <span data-translate="privacySettings">Privacy Settings</span>
+                        </div>
+                        <button class="action-btn" onclick="navigateTo('../privacy/settings.html')">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <div class="setting-item">
+                            <i class="fas fa-fingerprint"></i>
+                            <span data-translate="twoFactorAuthentication">Two-Factor Authentication</span>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="settings-section" data-section="app">
+                <h2 data-translate="appSettings"><i class="fas fa-cog"></i> App Settings</h2>
+                <ul>
+                    <li>
+                        <div class="setting-item">
+                            <i class="fas fa-database"></i>
+                            <span data-translate="storageUsage">Storage Usage</span>
+                        </div>
+                        <div class="storage-info">
+                            <div class="storage-bar">
+                                <div class="storage-used" style="width: 65%;"></div>
+                            </div>
+                            <span data-translate="storageUsed">65% used</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="setting-item">
+                            <i class="fas fa-clock"></i>
+                            <span data-translate="autoSync">Auto-Sync</span>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="settings-section" data-section="help">
+                <h2 data-translate="helpAndSupport"><i class="fas fa-question-circle"></i> Help & Support</h2>
+                <ul>
+                    <li>
+                        <div class="setting-item">
+                            <i class="fas fa-book"></i>
+                            <span data-translate="documentation">Documentation</span>
+                        </div>
+                        <button class="action-btn" onclick="navigateTo('../docs.html')">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <div class="setting-item">
+                            <i class="fas fa-envelope"></i>
+                            <span data-translate="contactSupport">Contact Support</span>
+                        </div>
+                        <button class="action-btn" onclick="navigateTo('../contact.html')">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <div class="setting-item">
+                            <i class="fas fa-file-alt"></i>
+                            <span data-translate="termsAndPrivacy">Terms & Privacy</span>
+                        </div>
+                        <button class="action-btn" onclick="openTermsPopup()">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </li>
+                </ul>
+            </section>
+        </div>
+        <a href="../logout/logout.html" class="profile-btn">
+            <button class="logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i>
+                <span data-translate="logout">Logout</span>
+            </button>
+        </a>
+    </div>
+
+    <!-- Popups -->
+    <div class="popup" id="terms-popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2 data-translate="termsAndConditions">Terms and Conditions</h2>
+                <button class="close-popup" onclick="closePopup('terms-popup')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="popup-body">
+                <div class="terms-content">
+                    <!-- Terms content will be loaded dynamically -->
+                </div>
+            </div>
+            <div class="popup-footer">
+                <button class="secondary-btn" onclick="closePopup('terms-popup')">
+                    <span data-translate="close">Close</span>
+                </button>
+                <button class="primary-btn" onclick="acceptTerms()">
+                    <span data-translate="accept">Accept</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" id="profile-popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2 data-translate="profileSettings">Profile Settings</h2>
+                <button class="close-popup" onclick="closePopup('profile-popup')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="popup-body">
+                <div class="profile-form">
+                    <div class="profile-picture">
+                        <img src="../assets/profile-placeholder.jpg" alt="Profile">
+                        <button class="change-photo-btn">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <label data-translate="name">Name</label>
+                        <input type="text" value="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label data-translate="email">Email</label>
+                        <input type="email" value="john@example.com">
+                    </div>
+                </div>
+            </div>
+            <div class="popup-footer">
+                <button class="secondary-btn" onclick="closePopup('profile-popup')">
+                    <span data-translate="cancel">Cancel</span>
+                </button>
+                <button class="primary-btn" onclick="saveProfile()">
+                    <span data-translate="saveChanges">Save Changes</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="Settings.js"></script>
+</body>
+</html>
