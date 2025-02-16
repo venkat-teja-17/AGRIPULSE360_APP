@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - AgroPulse360</title>
+    <link rel="stylesheet" href="../index.css/Profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="profile-container">
+        <div class="header">
+            <button class="back-btn" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h1>Profile</h1>
+            <button class="edit-btn" onclick="toggleEditMode()">
+                <i class="fas fa-edit"></i>
+            </button>
+        </div>
+
+        <div class="profile-content">
+            <div class="profile-header">
+                <div class="profile-pic-container">
+                    <div class="profile-pic">
+                        <img src="../profile.png" alt="Profile Picture" id="profileImage">
+                        <div class="upload-overlay">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                    </div>
+                    <input type="file" id="imageUpload" accept="image/*" style="display: none">
+                </div>
+                <h2 id="displayName" oninput="updateDisplayName()">User Name</h2>
+                <p class="user-type">Farmer</p>
+            </div>
+
+            <div class="profile-form">
+                <div class="form-section">
+                    <h3>Personal Information</h3>
+                    <div class="input-group">
+                        <label for="fullName">
+                            <i class="fas fa-user"></i> Full Name
+                        </label>
+                        <input type="text" id="fullName" placeholder="Enter your full name" disabled>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email">
+                            <i class="fas fa-envelope"></i> Email
+                        </label>
+                        <input type="email" id="email" placeholder="Enter your email" disabled>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="phone">
+                            <i class="fas fa-phone"></i> Phone Number
+                        </label>
+                        <input type="tel" id="phone" placeholder="Enter your phone number" disabled>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Farm Information</h3>
+                    <div class="input-group">
+                        <label for="address">
+                            <i class="fas fa-map-marker-alt"></i> Farm Address
+                        </label>
+                        <input type="text" id="address" placeholder="Enter your farm address" disabled>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="acres-owned">
+                            <i class="fas fa-chart-area"></i> Acres Owned
+                        </label>
+                        <input type="number" id="acres-owned" placeholder="Enter acres owned" disabled>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="acres-cultivating">
+                            <i class="fas fa-seedling"></i> Acres Cultivating
+                        </label>
+                        <input type="number" id="acres-cultivating" placeholder="Enter acres cultivating" disabled>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Farming Details</h3>
+                    <div class="input-group">
+                        <label for="crops">
+                            <i class="fas fa-leaf"></i> Main Crops
+                        </label>
+                        <input type="text" id="crops" placeholder="Enter main crops" disabled>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="experience">
+                            <i class="fas fa-clock"></i> Farming Experience (Years)
+                        </label>
+                        <input type="number" id="experience" placeholder="Years of experience" disabled>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button id="saveButton" class="save-btn" onclick="saveProfile()" style="display: none;">
+                    <i class="fas fa-save"></i> Save Changes
+                </button>
+                <button id="cancelButton" class="cancel-btn" onclick="cancelEdit()" style="display: none;">
+                    <i class="fas fa-times"></i> Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="../index.js/Profile.js"></script>
+    <script src="../index.js/translations.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            translatePage();
+            
+            window.addEventListener('storage', (event) => {
+                if (event.key === 'appLanguage') {
+                    translatePage();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

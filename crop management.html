@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Selection</title>
+    <link rel="stylesheet" href="../index.css/Crop Mangement.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Select a Crop</h2>
+        <select id="cropSelect">
+            <option value="corn">Corn</option>
+            <option value="soybean">Soybean</option>
+            <option value="wheat">Wheat</option>
+            <option value="rice">Rice</option>
+            <option value="maize">Maize</option>
+            <option value="sugarcane">Sugarcane</option>
+            <option value="pulses">Pulses</option>
+            <option value="horticulture">Horticultural Crops</option>
+        </select>
+        <button onclick="getCropDetails()">Get Details</button>
+        <div id="cropDetails"></div>
+    </div>
+    <script src="../index.js/Crop Mangement.js"></script>
+</body>
+</html>

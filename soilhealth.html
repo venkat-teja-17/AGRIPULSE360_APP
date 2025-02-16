@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soil Health Analysis</title>
+    <link rel="stylesheet" href="../index.css/soilhealth.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="navbar">
+        <a href="../index/dashboard.html" class="back-button"><i class="fas fa-arrow-left"></i> Back</a>
+        <h1>Advanced Soil Health Analysis</h1>
+        <button id="helpBtn" class="help-button"><i class="fas fa-question-circle"></i></button>
+    </div>
+
+    <div class="container">
+        <div class="main-content">
+            <!-- Input Method Selection -->
+            <div class="section input-method">
+                <h2>Input Method</h2>
+                <div class="input-toggle">
+                    <button class="active" data-method="manual">Manual Input</button>
+                    <button data-method="sensor">Sensor Data</button>
+                </div>
+            </div>
+
+            <!-- Manual Input Section -->
+            <div class="section measurements" id="manualInput">
+                <h2>Soil Measurements</h2>
+                <div class="slider-container">
+                    <label class="slider-label">
+                        pH Level
+                        <i class="fas fa-info-circle" title="Soil pH affects nutrient availability"></i>
+                    </label>
+                    <input type="range" id="pH" min="0" max="14" value="7" step="0.1">
+                    <span id="pHValue">7</span>
+                </div>
+                <div class="slider-container">
+                    <label class="slider-label">
+                        Moisture
+                        <i class="fas fa-info-circle" title="Optimal moisture ensures proper nutrient uptake"></i>
+                    </label>
+                    <input type="range" id="moisture" min="0" max="100" value="40">
+                    <span id="moistureValue">40%</span>
+                </div>
+                <div class="slider-container">
+                    <label class="slider-label">
+                        Nitrogen (N)
+                        <i class="fas fa-info-circle" title="Essential for leaf growth"></i>
+                    </label>
+                    <input type="range" id="nitrogen" min="0" max="100" value="50">
+                    <span id="nitrogenValue">50%</span>
+                </div>
+                <div class="slider-container">
+                    <label class="slider-label">
+                        Phosphorus (P)
+                        <i class="fas fa-info-circle" title="Important for root development"></i>
+                    </label>
+                    <input type="range" id="phosphorus" min="0" max="100" value="30">
+                    <span id="phosphorusValue">30%</span>
+                </div>
+                <div class="slider-container">
+                    <label class="slider-label">
+                        Potassium (K)
+                        <i class="fas fa-info-circle" title="Crucial for overall plant health"></i>
+                    </label>
+                    <input type="range" id="potassium" min="0" max="100" value="40">
+                    <span id="potassiumValue">40%</span>
+                </div>
+            </div>
+
+            <!-- Sensor Data Input Section -->
+            <div class="section sensor-input" id="sensorInput" style="display: none;">
+                <h2>Sensor Data Input</h2>
+                <div class="sensor-controls">
+                    <button id="connectSensor" class="sensor-btn">
+                        <i class="fas fa-plug"></i> Connect Sensor
+                    </button>
+                    <button id="readSensor" class="sensor-btn" disabled>
+                        <i class="fas fa-sync"></i> Read Data
+                    </button>
+                </div>
+                <div id="sensorStatus" class="sensor-status">
+                    Not Connected
+                </div>
+            </div>
+
+            <!-- Analysis Results -->
+            <div class="section results">
+                <h2>Soil Analysis Results</h2>
+                <div class="results-grid">
+                    <div class="result-card status-card">
+                        <h3>Overall Status</h3>
+                        <p class="status">
+                            <span id="status" class="excellent">Excellent 🌟</span>
+                        </p>
+                        <div class="health-meter">
+                            <div class="meter-fill" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-card visualization-card">
+                        <h3>NPK Balance</h3>
+                        <canvas id="npkChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommendations Section -->
+            <div class="section recommendations">
+                <h2>Smart Recommendations</h2>
+                <div class="recommendations-grid">
+                    <div class="recommendation-card">
+                        <h3><i class="fas fa-flask"></i> Soil Treatment</h3>
+                        <p id="recommendations">Analyzing soil conditions...</p>
+                    </div>
+                    <div class="recommendation-card">
+                        <h3><i class="fas fa-seedling"></i> Crop Suggestions</h3>
+                        <p id="plantRecommendations">Analyzing suitable crops...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Historical Data -->
+            <div class="section history">
+                <h2>Historical Data <button id="exportData" class="export-btn"><i class="fas fa-download"></i> Export</button></h2>
+                <div class="history-chart">
+                    <canvas id="historyChart"></canvas>
+                </div>
+                <div class="history-table">
+                    <table id="historyTable">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>pH</th>
+                                <th>Moisture</th>
+                                <th>N</th>
+                                <th>P</th>
+                                <th>K</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reference Panel -->
+        <div class="reference-panel">
+            <h2>Reference Guide</h2>
+            <div class="ideal-ranges">
+                <h3>Ideal Ranges</h3>
+                <ul>
+                    <li><strong>pH:</strong> 6.0 - 7.5</li>
+                    <li><strong>Moisture:</strong> 40% - 60%</li>
+                    <li><strong>Nitrogen:</strong> > 30%</li>
+                    <li><strong>Phosphorus:</strong> > 30%</li>
+                    <li><strong>Potassium:</strong> > 30%</li>
+                </ul>
+            </div>
+            <div class="quick-tips">
+                <h3>Quick Tips</h3>
+                <ul id="quickTips">
+                    <!-- Dynamically populated -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div id="helpModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>How to Use Soil Health Analysis</h2>
+            <div class="help-content">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Weather Integration -->
+    <div class="weather-widget">
+        <div id="weatherInfo">
+            <i class="fas fa-cloud-sun"></i>
+            <span id="temperature">Loading...</span>
+            <span id="humidity">Loading...</span>
+        </div>
+    </div>
+
+    <script src="../index.js/soilhealth.js"></script>
+</body>
+</html>

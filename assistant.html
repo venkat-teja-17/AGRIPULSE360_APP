@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroPulse AI Assistant</title>
+    <link rel="stylesheet" href="../index.css/assistant.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="../index/dashboard.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            Back to Home
+        </a>
+    </nav>
+
+    <div class="container">
+        <header class="page-header">
+            <h1>AgroPulse AI Assistant</h1>
+            <p class="subtitle">Your smart farming companion</p>
+        </header>
+
+        <div class="chat-container">
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">
+                    <div class="message-content">
+                        <i class="fas fa-robot bot-icon"></i>
+                        <div class="text">
+                            Hello! I'm your AgroPulse AI Assistant. I can help you with:
+                            <ul>
+                                <li>Crop recommendations</li>
+                                <li>Pest control advice</li>
+                                <li>Weather-based farming tips</li>
+                                <li>Market prices and trends</li>
+                            </ul>
+                            How can I assist you today?
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-container">
+                <div class="camera-input">
+                    <button id="toggleCamera" class="camera-btn">
+                        <i class="fas fa-camera"></i>
+                    </button>
+                    <div class="camera-status" id="cameraStatus">Take photo</div>
+                </div>
+                <div class="voice-input">
+                    <button id="startVoice" class="voice-btn">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                    <div class="voice-status" id="voiceStatus">Click to speak</div>
+                </div>
+                <div class="text-input">
+                    <input type="text" id="userInput" placeholder="Type your question here...">
+                    <button id="sendMessage">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Camera Modal -->
+        <div id="cameraModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Take a Photo</h3>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="camera-container">
+                    <video id="cameraFeed" autoplay playsinline></video>
+                    <canvas id="photoCanvas" style="display: none;"></canvas>
+                    <div class="camera-controls">
+                        <button id="switchCamera" class="camera-control-btn">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                        <button id="capturePhoto" class="camera-control-btn">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                        <button id="retakePhoto" class="camera-control-btn" style="display: none;">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                        <button id="sendPhoto" class="camera-control-btn" style="display: none;">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="photo-preview" id="photoPreview" style="display: none;">
+                    <img id="capturedImage" src="" alt="Captured photo">
+                </div>
+            </div>
+        </div>
+
+        <div class="quick-questions">
+            <h3>Common Questions</h3>
+            <div class="question-buttons">
+                <button class="question-btn" data-question="What crops are suitable for this season?">
+                    Seasonal Crops
+                </button>
+                <button class="question-btn" data-question="How to prevent common plant diseases?">
+                    Plant Diseases
+                </button>
+                <button class="question-btn" data-question="What are the current market prices?">
+                    Market Prices
+                </button>
+                <button class="question-btn" data-question="How to improve soil fertility naturally?">
+                    Soil Health
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="language-selector">
+        <select id="languageSelect">
+            <option value="en">English</option>
+            <option value="hi">हिंदी</option>
+            <option value="te">తెలుగు</option>
+            <option value="ta">தமிழ்</option>
+            <option value="kn">ಕನ್ನಡ</option>
+        </select>
+    </div>
+
+    <script src="../index.js/assistant.js"></script>
+</body>
+</html>

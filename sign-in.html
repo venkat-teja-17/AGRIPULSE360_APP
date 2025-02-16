@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroPulse 360 - Create Account</title>
+    <link rel="stylesheet" href="../index.css/sign-in.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="background-animation">
+        <div class="floating-elements"></div>
+    </div>
+
+    <div class="container">
+        <!-- Back Button -->
+        <a href="../login page/login.html" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+            <span>Back to Login</span>
+        </a>
+
+        <div class="form-container">
+            <!-- Logo Section -->
+            <div class="logo-section">
+                <i class="fas fa-leaf logo-icon"></i>
+                <h1>Create Account</h1>
+                <p class="tagline">Join AgroPulse 360 for smart agriculture solutions</p>
+            </div>
+
+            <form id="signup-form">
+                <div class="form-group">
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="name" placeholder="Full Name" required>
+                        <span class="error-text"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" placeholder="Email Address" required>
+                        <span class="error-text"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-field">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" id="phone" placeholder="Phone Number" required>
+                        <span class="error-text"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Create Password" required>
+                        <i class="fas fa-eye-slash toggle-password"></i>
+                        <span class="error-text"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+                        <i class="fas fa-eye-slash toggle-password"></i>
+                        <span class="error-text"></span>
+                    </div>
+                </div>
+
+                <!-- Password Requirements -->
+                <div class="password-requirements">
+                    <h4>Password Requirements:</h4>
+                    <ul>
+                        <li id="length"><i class="fas fa-circle"></i> At least 8 characters</li>
+                        <li id="uppercase"><i class="fas fa-circle"></i> One uppercase letter</li>
+                        <li id="lowercase"><i class="fas fa-circle"></i> One lowercase letter</li>
+                        <li id="number"><i class="fas fa-circle"></i> One number</li>
+                        <li id="special"><i class="fas fa-circle"></i> One special character</li>
+                    </ul>
+                </div>
+
+                <div class="form-group terms-group">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="agreeCheckbox" required>
+                        <span class="checkmark"></span>
+                        <span class="terms-text">
+                            I agree to the 
+                            <a href="../index/tc.html" class="terms-link">Terms & Conditions</a>
+                            and
+                            <a href="../index/privacy.html" class="terms-link">Privacy Policy</a>
+                        </span>
+                    </label>
+                </div>
+
+                <div class="error-message"></div>
+                <div class="success-message"></div>
+
+                <a href="../index/success.html" class="submit-button" style="text-decoration: none; display: inline-block;">
+                    <span class="button-content">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Create Account</span>
+                    </span>
+                </a>
+
+                <div class="social-signup">
+                    <p>Or sign up with</p>
+                    <div class="social-buttons">
+                        <button type="button" class="social-button google">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="">
+                            <span>Google</span>
+                        </button>
+                    </div>
+                </div>
+
+                <p class="login-prompt">
+                    Already have an account? 
+                    <a href="../index/login.html">Login here</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading Animation -->
+    <div class="loading-overlay">
+        <div class="loader">
+            <i class="fas fa-seedling"></i>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="../index.js/sign-in.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Market Space </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="../index.css/Market.css">
+  <style>
+    .navbar {
+        padding: 1rem 2rem;
+        background-color: #f8f9fa;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+
+    .back-btn {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.75rem 1.5rem;
+        color: #2e7d32;
+        text-decoration: none;
+        background-color: #ffffff;
+        border: 2px solid #2e7d32;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+        background-color: #2e7d32;
+        color: white;
+        transform: translateX(-2px);
+        box-shadow: 0 4px 8px rgba(46, 125, 50, 0.2);
+    }
+
+    .back-btn i {
+        margin-right: 10px;
+        font-size: 1.1rem;
+    }
+
+    .back-btn span {
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+    }
+</style>
+</head>
+<body>
+<nav class="navbar">
+    <a href="../index/dashboard.html" class="back-btn">
+        <i class="fas fa-arrow-left"></i>
+        <span>Back to Dashboard</span>
+    </a>
+</nav>
+
+
+<body>
+
+  <!-- Header -->
+  <header>Market Space </header>
+
+  <!-- Search Bar -->
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search for fruits/vegetables..." onkeyup="searchItems()">
+    <button onclick="searchItems()">Search</button>
+  </div>
+
+  <!-- Market Container -->
+  <div class="market-container" id="marketItemsContainer">
+    <!-- Market items will be displayed here -->
+  </div>
+
+  <!-- Modal for Item Details -->
+  <div class="modal" id="detailsModal">
+    <div class="modal-content">
+      <h2 id="item-name">Item Name</h2>
+      <img id="item-image" src="" alt="Item Image" style="width: 100px; height: 100px; border-radius: 10px;">
+      <p><strong>Current Price:</strong> ₹<span id="current-price"></span>/kg</p>
+      <p><strong>Previous Price:</strong> ₹<span id="previous-price"></span>/kg</p>
+      <p><strong>Surrounding Price:</strong> ₹<span id="surrounding-price"></span>/kg</p>
+      <p><strong>Available At:</strong> <span id="availability"></span></p>
+      <button onclick="closeModal()">Close</button>
+    </div>
+  </div>
+<script src="../index.js/Market.js"></script>
+</body>
+</html>
