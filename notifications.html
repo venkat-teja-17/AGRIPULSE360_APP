@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Settings</title>
+    <link rel="stylesheet" href="notifications.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <button class="back-button" onclick="goBack()">←</button>
+            <h1>Notification Settings</h1>
+        </div>
+
+        <div class="settings-section">
+            <h2>General Notifications</h2>
+            <div class="setting-item">
+                <span>Push Notifications</span>
+                <label class="toggle">
+                    <input type="checkbox" id="pushNotifications" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="setting-item">
+                <span>Email Notifications</span>
+                <label class="toggle">
+                    <input type="checkbox" id="emailNotifications">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="settings-section">
+            <h2>Sound Settings</h2>
+            <div class="setting-item">
+                <span>Notification Sound</span>
+                <label class="toggle">
+                    <input type="checkbox" id="notificationSound" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="setting-item">
+                <span>Sound Volume</span>
+                <div class="volume-control">
+                    <input type="range" id="volumeSlider" min="0" max="100" value="70">
+                    <span id="volumeValue">70%</span>
+                </div>
+            </div>
+
+            <div class="setting-item">
+                <span>Sound Type</span>
+                <select id="soundType" class="sound-select">
+                    <option value="default">Default</option>
+                    <option value="chime">Chime</option>
+                    <option value="bell">Bell</option>
+                    <option value="melody">Melody</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <script src="notifications.js"></script>
+</body>
+</html>

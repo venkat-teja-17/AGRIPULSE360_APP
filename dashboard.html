@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agri-Portal - Smart Farming Solutions</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100vh;
+            background-color: #3fa756;
+            padding: 20px 0;
+            border-right: 1px solid #ddd;
+            transition: all 0.5s ease;
+            z-index: 1000;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            color: white;
+        }
+        .main-container {
+            margin-left: 250px;
+            padding: 20px;
+            transition: margin-left 0.5s ease;
+            width: calc(100% - 250px);
+        }
+        .sidebar-hidden {
+            left: -250px;
+        }
+        .main-container.sidebar-hidden {
+            margin-left: 0;
+            width: 100%;
+        }
+        .toggle-btn {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1100;
+            transition: transform 0.2s;
+        }
+        .toggle-btn:hover {
+            transform: scale(1.1);
+        }
+        .sidebar-header {
+            position: relative;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .header-content {
+            padding: 20px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        @media (max-width: 768px) {
+            #sidebar {
+                width: 250px;
+                max-width: 80%;
+            }
+            .main-container {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar-hidden">
+        <div class="sidebar-header">
+            <div class="profile">
+                <img src="../profile.png" alt="User" id="sidebarProfileImage">
+                <div class="profile-info">
+                    <h3 id="sidebarUserName" data-translate="dashboard">User Name</h3>
+                    <span class="user-status" data-translate="farmer">farmer</span>
+                </div>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="../Profile/Profile.html" data-translate="profile">Profile</a></li>
+                <li><a href="../language/language.html" data-translate="language">Language</a></li>
+                <li><a href="../contact/contact.html" data-translate="contact">Contact & Social Media</a></li>
+                <li><a href="../Feedback/Feedback.html" data-translate="feedback">Feedback</a></li>
+                <li><a href="../Settings/Settings.html" data-translate="settings">Settings</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <header class="sidebar-header">
+            <button id="toggle-btn" class="toggle-btn"><i class="fas fa-bars"></i></button>
+            <div class="header-content">
+                <h1 data-translate="welcome">Welcome to Agri-Portal</h1>
+                <div class="header-actions">
+                    <div class="search-bar">
+                        <input type="text" data-translate="search" placeholder="Search...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="notification-bell">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+         <main>
+            <div class="grid-container">
+                <a href="../crop management/Crop Management.html" class="grid-item">
+                    <div class="card-content">
+                        <img src="https://cdn-icons-png.flaticon.com/512/10534/10534202.png" alt="Crop Management">
+                        <h3 data-translate="cropManagement">Crop Management</h3>
+                        <p data-translate="cropManagementDesc">Optimize your crop lifecycle</p>
+                    </div>
+                </a>
+                <a href="../croprecomendation/crop recommendation.html" class="grid-item">
+                    <div class="card-content">
+                        <img src="https://img.freepik.com/free-vector/shield-with-leaves_78370-5586.jpg" alt="Crop Recommendation">
+                        <h3 data-translate="cropRecommendation">Crop Recommendation</h3>
+                        <p data-translate="cropRecommendationDesc">AI-powered crop suggestions</p>
+                    </div>
+                </a>
+                <a href="../soilhealth/soilhealth.html" class="grid-item">
+                    <div class="card-content">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm95ksc2HhPtYcx-8E8RyxQLmYMAUCKmfE4w&s" alt="Soil Health">
+                        <h3 data-translate="soilHealth">Soil Health Analysis</h3>
+                        <p data-translate="soilHealthDesc">Monitor soil conditions</p>
+                    </div>
+                </a>
+                <a href="../water/water.html" class="grid-item">
+                    <div class="card-content">
+                        <img src="https://cdn-icons-png.flaticon.com/512/15343/15343395.png" alt="Water Management">
+                        <h3 data-translate="waterManagement">Water Management</h3>
+                        <p data-translate="waterManagementDesc">Smart irrigation solutions</p>
+                    </div>
+                </a>
+                <a href="../subsides/subsides.html" class="grid-item">
+                    <div class="card-content">
+                        <img src="https://cdn-icons-png.flaticon.com/512/4881/4881137.png" alt="Schemes and Subsidies">
+                        <h3 data-translate="schemesAndSubsidies">Schemes & Subsidies</h3>
+                        <p data-translate="schemesAndSubsidiesDesc">Government support programs</p>
+                    </div>
+                </a>
+                <a href="../Market Space/Market.html" class="grid-item">
+                    <div class="card-content">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVLxTOuVhCkiMHw2ii6ZCtqmsDxB0JM5RHDg&s" alt="Market Space">
+                        <h3 data-translate="marketSpace">Market Space</h3>
+                        <p data-translate="marketSpaceDesc">Connect with buyers</p>
+                    </div>
+                </a>
+                <a href="../weather/weather.html" class="grid-item">
+                    <div class="card-content">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUD6Be_NFDpI3-V1Cni1xVIebWeCqfnIVzKcNFqKoBk0T1LlDBPl-kKYXCgpz4sFn9Krk&usqp=CAU" alt="Weather Forecasting">
+                        <h3 data-translate="weatherForecasting">Weather Forecasting</h3>
+                        <p data-translate="weatherForecastingDesc">7-day weather prediction</p>
+                    </div>
+                </a>
+                <a href="../financial_tracking/financial_tracking.html" class="grid-item">
+                    <div class="card-content">
+                        <img src="https://img.freepik.com/premium-vector/green-indication-arrows-up-arrows-statistic-financial-symbol-vector-illustration-eps-10_213497-3041.jpg" alt="Financial Tracking">
+                        <h3 data-translate="financialTracking">Financial Tracking</h3>
+                        <p data-translate="financialTrackingDesc">Monitor farm finances</p>
+                    </div>
+                </a>
+                <a href="../pestisides/pest.html" class="grid-item">
+                    <div class="card-content">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH3Z69Gn4auuZjNGnjGZiZzbmsyc7joW6XNg&s" alt="Pest and Diseases">
+                        <h3 data-translate="pestAndDiseases">Pest & Diseases</h3>
+                        <p data-translate="pestAndDiseasesDesc">Pest control solutions</p>
+                    </div>
+                </a>
+                <a href="../ai-assistant/assistant.html" class="grid-item">
+                    <div class="card-content">
+                        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="Agri Assistant">
+                        <h3 data-translate="agriAssistant">Agri Assistant</h3>
+                        <p data-translate="agriAssistantDesc">AI farming assistant</p>
+                    </div>
+                </a>
+                <a href="../education/education.html" class="grid-item">
+                    <div class="card-content">
+                        <img src="https://icones.pro/wp-content/uploads/2021/06/icone-de-l-education-vert.png" alt="Education">
+                        <h3 data-translate="education">Education</h3>
+                        <p data-translate="educationDesc">Learning resources</p>
+                    </div>
+                </a>
+            </a>
+            <a href="../premium/premium.html" class="grid-item">
+                <div class="card-content">
+                    <img src="https://img.icons8.com/fluency/96/crown.png" alt="Premium Features">
+                    <h3 data-translate="premium">Premium</h3>
+                    <p data-translate="premiumDesc">Access exclusive features</p>
+                </div>
+            </a>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="dashboard.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.getElementById('toggle-btn');
+            const sidebar = document.getElementById('sidebar');
+            const mainContainer = document.querySelector('.main-container');
+            const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
+
+            // Sidebar toggle functionality with more advanced animation
+            toggleBtn.addEventListener('click', () => {
+                // Check if sidebar is currently active
+                const isActive = sidebar.classList.contains('active');
+
+                if (isActive) {
+                    // Close sidebar
+                    sidebar.classList.remove('active');
+                    mainContainer.classList.remove('shifted');
+                    toggleBtn.style.transform = 'rotate(0deg)';
+                } else {
+                    // Open sidebar
+                    sidebar.classList.add('active');
+                    mainContainer.classList.add('shifted');
+                    toggleBtn.style.transform = 'rotate(180deg)';
+                }
+            });
+
+            // Close sidebar when a link is clicked on mobile
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        sidebar.classList.remove('active');
+                        mainContainer.classList.remove('shifted');
+                        toggleBtn.style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+
+            // Search functionality with improved filtering
+            const searchInput = document.querySelector('.search-bar input');
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const gridItems = document.querySelectorAll('.grid-item');
+
+                gridItems.forEach(item => {
+                    const title = item.querySelector('h3').textContent.toLowerCase();
+                    const description = item.querySelector('p').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        item.style.display = 'block';
+                        item.style.opacity = '1';
+                    } else {
+                        item.style.display = 'none';
+                        item.style.opacity = '0';
+                    }
+                });
+            });
+
+            // Notification bell click handler
+            const notificationBell = document.querySelector('.notification-bell');
+            notificationBell.addEventListener('click', () => {
+                alert('You have 3 new notifications');
+            });
+        });
+    </script>
+</body>
+</html>
